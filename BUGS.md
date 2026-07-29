@@ -1,4 +1,4 @@
-# COMP90100: Assessmt 3 - Wheater app
+# COMP90100: Assessment 3 - Wheater app
 
 - Student: Raphael Barbosa Maciel
 - Subject: COMP90100 - AI Programming Fundamentals (COMP90100_2026_OT4_UMO_1)
@@ -12,7 +12,7 @@
     - How was found?:
     - How was fixed?: 
 
-
+---
 + [ ] BUG 002
     - Name:
     - Description:
@@ -20,6 +20,7 @@
     - How was found?:
     - How was fixed?: 
 
+---
 + [ ] BUG 003
     - Name:
     - Description:
@@ -28,6 +29,7 @@
     - How was fixed?: 
 
 
+---
 + [ ] BUG 004
     - Name:
     - Description:
@@ -35,7 +37,7 @@
     - How was found?:
     - How was fixed?: 
 
-
+---
 + [ ] BUG 005
     - Name:
     - Description:
