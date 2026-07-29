@@ -1,4 +1,4 @@
-# COMP90100: Assessment 3 - Wheater app
+# COMP90100: Assessment 3 - Weather app
 
 - Student: Raphael Barbosa Maciel
 - Subject: COMP90100 - AI Programming Fundamentals (COMP90100_2026_OT4_UMO_1)
@@ -11,6 +11,7 @@
     - Issue Line number:
     - How it was found:
     - How it was fixed: 
+        - Commit Hash:
 
 ---
 + [ ] BUG 002
@@ -19,6 +20,7 @@
     - Issue Line number:
     - How it was found:
     - How it was fixed: 
+        - Commit Hash:
 
 ---
 + [ ] BUG 003
@@ -27,6 +29,7 @@
     - Issue Line number:
     - How it was found:
     - How it was fixed: 
+        - Commit Hash:
 
 
 ---
@@ -36,6 +39,7 @@
     - Issue Line number:
     - How it was found:
     - How it was fixed: 
+        - Commit Hash:
 
 ---
 + [ ] BUG 005
@@ -44,3 +48,4 @@
     - Issue Line number:
     - How it was found:
     - How it was fixed: 
+        - Commit Hash:
