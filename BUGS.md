@@ -20,7 +20,7 @@
     - Issue Line number: 23, 24
     - How it was found: started by investigating the runtime error API error 400, using the print(response.text) function just after the requests.get() call and checking the response content. The error message in the response was "Latitude must be in range of -90 to 90°. Given: 151.21.". With that I went back to the check the paramerters and found the parameters inverted in the dict value assignement for the respective keys.
     - How it was fixed: manually changed the parameter order
-        - Commit Hash:
+        - Commit Hash: b8b40f1762b96a612c9d8fe5d1ab9f169a3ebae9
 
 ---
 + [ ] BUG 003
