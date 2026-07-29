@@ -20,8 +20,8 @@ def get_weather(latitude, longitude):
         On any other status, prints the status code and returns None.
     """    
     params = {
-        "latitude": longitude,
-        "longitude": latitude,
+        "latitude": latitude,
+        "longitude": longitude,
         "current_weather": True,
         "temperature_unit": "fahrenheit",    
         "timezone": "auto"
