@@ -8,39 +8,39 @@
 + [ ] BUG 001
     - Name:
     - Description:
-    - Line number:
-    - How was found?:
-    - How was fixed?: 
+    - Issue Line number:
+    - How it was found:
+    - How it was fixed: 
 
 ---
 + [ ] BUG 002
     - Name:
     - Description:
-    - Line number:
-    - How was found?:
-    - How was fixed?: 
+    - Issue Line number:
+    - How it was found:
+    - How it was fixed: 
 
 ---
 + [ ] BUG 003
     - Name:
     - Description:
-    - Line number:
-    - How was found?:
-    - How was fixed?: 
+    - Issue Line number:
+    - How it was found:
+    - How it was fixed: 
 
 
 ---
 + [ ] BUG 004
     - Name:
     - Description:
-    - Line number:
-    - How was found?:
-    - How was fixed?: 
+    - Issue Line number:
+    - How it was found:
+    - How it was fixed: 
 
 ---
 + [ ] BUG 005
     - Name:
     - Description:
-    - Line number:
-    - How was found?:
-    - How was fixed?: 
+    - Issue Line number:
+    - How it was found:
+    - How it was fixed: 
