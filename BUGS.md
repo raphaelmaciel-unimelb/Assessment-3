@@ -6,11 +6,11 @@
 ## List of issues and fixes
 
 + [ ] BUG 001
-    - Name:
-    - Description:
-    - Issue Line number:
-    - How it was found:
-    - How it was fixed: 
+    - Name: SyntaxError '==' instead of '='
+    - Description: SyntaxError: cannot assign to attribute here. Maybe you meant '==' instead of '='?
+    - Issue Line number: 30
+    - How it was found: runtime error when trying to run the python weather.py for the first time
+    - How it was fixed: replacing '=' by '=='
         - Commit Hash:
 
 ---

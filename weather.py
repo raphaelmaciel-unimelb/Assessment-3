@@ -27,7 +27,7 @@ def get_weather(latitude, longitude):
         "timezone": "auto"
     }
     response = requests.get(BASE_URL, params=params)
-    if response.status_code = 200:
+    if response.status_code == 200:
         data = response.json()
         return data["current_weather"]["temperature"]
 
