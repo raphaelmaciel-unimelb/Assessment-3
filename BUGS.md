@@ -43,7 +43,7 @@
     - Issue Line number: 26
     - How it was found: by analysing the implemented code vs the requirements described in the Docstring
     - How it was fixed: manually updated the temperatue_unit to "Celsius"
-        - Commit Hash: 
+        - Commit Hash: f9c12eef6c8021144feb029d6094081de05bf3bf
         - Commit message: "Fixing bug 004"
 
 ---
