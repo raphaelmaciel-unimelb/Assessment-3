@@ -23,7 +23,7 @@ def get_weather(latitude, longitude):
         "latitude": latitude,
         "longitude": longitude,
         "current_weather": True,
-        "temperature_unit": "fahrenheit",    
+        "temperature_unit": "celsius",    
         "timezone": "auto"
     }
     response = requests.get(BASE_URL, params=params)

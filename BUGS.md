@@ -26,7 +26,7 @@
         - Commit message: "Fixing bug 002"
 
 ---
-+ [ ] BUG 003
++ [X] BUG 003
     - Name: Return args
     - Description: the function is not returning the full current-weather dict (temperature, windspeed, winddirection, time, ...) exactly as the API returns it
     - Issue Line number: 33
@@ -37,14 +37,14 @@
 
 
 ---
-+ [ ] BUG 004
-    - Name:
-    - Description:
-    - Issue Line number:
-    - How it was found:
-    - How it was fixed: 
-        - Commit Hash:
-        - Commit message:
++ [X] BUG 004
+    - Name: Temperature unit
+    - Description: the temperature unit should be in Celsius instead of fahrenheit
+    - Issue Line number: 26
+    - How it was found: by analysing the implemented code vs the requirements described in the Docstring
+    - How it was fixed: manually updated the temperatue_unit to "Celsius"
+        - Commit Hash: 
+        - Commit message: "Fixing bug 004"
 
 ---
 + [ ] BUG 005
