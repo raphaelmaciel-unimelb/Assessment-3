@@ -32,7 +32,7 @@
     - Issue Line number: 33
     - How it was found: by analysing the implemented code vs the requirements described in the Docstring 
     - How it was fixed: manually changing the return arg by removing the ["temperature"]
-        - Commit Hash:
+        - Commit Hash: 183f917f020b3124119a62be051d9d3e0b46b599
         - Commit message: "Fixing bug 003"
 
 
