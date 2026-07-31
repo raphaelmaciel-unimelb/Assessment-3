@@ -29,7 +29,7 @@ def get_weather(latitude, longitude):
     response = requests.get(BASE_URL, params=params)
     if response.status_code == 200:
         data = response.json()
-        return data["current_weather"]["temperature"]
+        return data["current_weather"]
 
     else:
         print(f"API error: {response.status_code}")

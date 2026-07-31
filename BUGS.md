@@ -27,13 +27,13 @@
 
 ---
 + [ ] BUG 003
-    - Name:
-    - Description:
-    - Issue Line number:
-    - How it was found:
-    - How it was fixed: 
+    - Name: Return args
+    - Description: the function is not returning the full current-weather dict (temperature, windspeed, winddirection, time, ...) exactly as the API returns it
+    - Issue Line number: 33
+    - How it was found: by analysing the implemented code vs the requirements described in the Docstring 
+    - How it was fixed: manually changing the return arg by removing the ["temperature"]
         - Commit Hash:
-        - Commit message:
+        - Commit message: "Fixing bug 003"
 
 
 ---
