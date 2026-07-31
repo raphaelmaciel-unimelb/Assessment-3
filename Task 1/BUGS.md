@@ -48,7 +48,7 @@
 
 ---
 + [ ] BUG 005
-    - Name: current_weather parameter
+    - Name:
     - Description:
     - Issue Line number:
     - How it was found:

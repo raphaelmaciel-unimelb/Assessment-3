@@ -2,11 +2,11 @@
   "city": "Sydney",
   "data": [
     {
-      "time": "2026-07-31T10:15",
+      "time": "2026-07-31T10:30",
       "interval": 900,
-      "temperature": 12.9,
-      "windspeed": 7.1,
-      "winddirection": 254,
+      "temperature": 13.5,
+      "windspeed": 7.0,
+      "winddirection": 241,
       "is_day": 1,
       "weathercode": 0
     }
