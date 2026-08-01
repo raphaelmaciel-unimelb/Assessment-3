@@ -48,10 +48,10 @@
 
 ---
 + [X] BUG 005
-    - Name: Returns with the full current-weather dict
-    - Description: the expected returns is current-weather dict (temperature, windspeed, winddirection, time, ...) exactly as the API returns it
-    - Issue Line number: 32, and 60
+    - Name: `data` directly as the weather dict 
+    - Description: In the save_to_file() function is expected a "data" field holding `data` directly as the weather dict instead of a list and the returns is current-weather dict (temperature, windspeed, winddirection, time, ...) exactly as the API returns it
+    - Issue Line number: 34, and 60
     - How it was found: by analysing the implemented code vs the requirements described in the Docstring
     - How it was fixed: manually updated the return variable dict with (temperature, windspeed, winddirection, time, ...) and removed the list brackets from the 'data' in the record variable at the save_to_file() function
-        - Commit Hash:
-        - Commit message: "Fixing bug 005"
+        - Commit Hash: ae99b1be1cd29e9d815a524badec98a224200d52
+        - Commit message: "Fixing bug"

@@ -1,4 +1,5 @@
-import requests, json
+import requests
+import json
 
 BASE_URL = "https://api.open-meteo.com/v1/forecast"
 
@@ -29,7 +30,16 @@ def get_weather(latitude, longitude):
     response = requests.get(BASE_URL, params=params)
     if response.status_code == 200:
         data = response.json()
-        return data["current_weather"]
+        
+        current_weather = {
+            "temperature" : data["current_weather"]["temperature"],
+            "windspeed" : data["current_weather"]["windspeed"],
+            "winddirection" : data["current_weather"]["winddirection"],
+            "weathercode" : data["current_weather"]["weathercode"],
+            "time" : data["current_weather"]["time"]
+        }
+
+        return current_weather
 
     else:
         print(f"API error: {response.status_code}")
@@ -47,7 +57,7 @@ def save_to_file(city, data, filename):
     """    
     record = {
         "city": city,
-        "data": [data] 
+        "data": data 
     }
     with open(filename, "w") as f:
         json.dump(record, f, indent=2)
