@@ -47,11 +47,11 @@
         - Commit message: "Fixing bug 004"
 
 ---
-+ [ ] BUG 005
-    - Name:
-    - Description:
-    - Issue Line number:
-    - How it was found:
-    - How it was fixed: 
++ [X] BUG 005
+    - Name: Returns with the full current-weather dict
+    - Description: the expected returns is current-weather dict (temperature, windspeed, winddirection, time, ...) exactly as the API returns it
+    - Issue Line number: 32, and 60
+    - How it was found: by analysing the implemented code vs the requirements described in the Docstring
+    - How it was fixed: manually updated the return variable dict with (temperature, windspeed, winddirection, time, ...) and removed the list brackets from the 'data' in the record variable at the save_to_file() function
         - Commit Hash:
-        - Commit message:
+        - Commit message: "Fixing bug 005"

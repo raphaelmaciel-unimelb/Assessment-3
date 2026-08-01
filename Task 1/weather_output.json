@@ -1,14 +1,10 @@
 {
   "city": "Sydney",
-  "data": [
-    {
-      "time": "2026-07-31T10:30",
-      "interval": 900,
-      "temperature": 13.5,
-      "windspeed": 7.0,
-      "winddirection": 241,
-      "is_day": 1,
-      "weathercode": 0
-    }
-  ]
+  "data": {
+    "temperature": 14.2,
+    "windspeed": 3.7,
+    "winddirection": 119,
+    "weathercode": 2,
+    "time": "2026-08-01T15:30"
+  }
 }
