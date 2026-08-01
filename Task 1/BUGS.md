@@ -54,4 +54,4 @@
     - How it was found: by analysing the implemented code vs the requirements described in the Docstring
     - How it was fixed: manually updated the return variable dict with (temperature, windspeed, winddirection, time, ...) and removed the list brackets from the 'data' in the record variable at the save_to_file() function
         - Commit Hash: ae99b1be1cd29e9d815a524badec98a224200d52
-        - Commit message: "Fixing bug"
+        - Commit message: "Fixing bug 005"
