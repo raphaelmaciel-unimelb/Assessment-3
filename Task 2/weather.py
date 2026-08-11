@@ -31,13 +31,7 @@ def get_weather(latitude, longitude):
     if response.status_code == 200:
         data = response.json()
         
-        current_weather = {
-            "temperature" : data["current_weather"]["temperature"],
-            "windspeed" : data["current_weather"]["windspeed"],
-            "winddirection" : data["current_weather"]["winddirection"],
-            "weathercode" : data["current_weather"]["weathercode"],
-            "time" : data["current_weather"]["time"]
-        }
+        current_weather = data.get('current_weather')
 
         return current_weather
 
