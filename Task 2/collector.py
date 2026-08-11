@@ -63,7 +63,47 @@ def fetch_all_cities(cities):
     else:
         return []
 
+def update_log(log_path, new_results):
+    list_results=[]
 
+    try:
+        with open(log_path, "r", encoding="utf-8") as file:
+                    content = file.read().strip()
+                    if content:
+                        json_content = json.loads(content)
+                        if isinstance(json_content, list):
+                            for item in json_content:
+                                if isinstance(item, dict) and item.get('city'):
+                                    list_results.append(item)
+
+    except (AttributeError, FileNotFoundError, json.decoder.JSONDecodeError) as file_not_found:
+        print(f"   [warn] update_log(): {file_not_found} ... trying to create the file if the folder is available")
+        # return False              
+
+    for result in new_results:
+        raw_city = result.get('city')
+        result_city = str(raw_city).strip().capitalize() if raw_city else ""
+        result_fetched_at = result.get('fetched_at')
+        result_weather = result.get('weather')
+        
+        if result_city not in ("", None) and result_fetched_at not in ("", None) and result_weather:
+            new_record = dict(result)
+            new_record["city"] = result_city
+            list_results.append(new_record)
+
+    if len(list_results) > 0:
+        try:
+            with open(log_path, "w", encoding="utf-8") as outfile:
+                json.dump(list_results, outfile, indent=2, ensure_ascii=False) #converting list[dict] to json and adding to the output file
+        except Exception as e:
+            print(f"   [error] update_log(): Error with the file {log_path}: {e}")
+            return False          
+
+        return True     
+    else:
+        return False
+        
+        
 if __name__ == "__main__":
     cities = [ 
         {"name": "Sydney", "lat": -33.87, "lon": 151.21}, 
@@ -73,5 +113,5 @@ if __name__ == "__main__":
         
     ] 
 
-    print(fetch_all_cities(cities))
+    print(update_log("weather_log.json", fetch_all_cities(cities)))
 

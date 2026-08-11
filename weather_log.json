@@ -1,0 +1,54 @@
+[
+  {
+    "city": "Sydney",
+    "fetched_at": "2026-08-11T07:41:20.746217+00:00",
+    "weather": {
+      "time": "2026-08-11T17:30",
+      "interval": 900,
+      "temperature": 15.8,
+      "windspeed": 8.9,
+      "winddirection": 278,
+      "is_day": 0,
+      "weathercode": 0
+    }
+  },
+  {
+    "city": "Melbourne",
+    "fetched_at": "2026-08-11T07:41:22.079627+00:00",
+    "weather": {
+      "time": "2026-08-11T17:30",
+      "interval": 900,
+      "temperature": 11.6,
+      "windspeed": 14.9,
+      "winddirection": 358,
+      "is_day": 1,
+      "weathercode": 3
+    }
+  },
+  {
+    "city": "Melbourne",
+    "fetched_at": "2026-08-11T07:41:23.440646+00:00",
+    "weather": {
+      "time": "2026-08-11T17:30",
+      "interval": 900,
+      "temperature": 11.6,
+      "windspeed": 14.9,
+      "winddirection": 358,
+      "is_day": 1,
+      "weathercode": 3
+    }
+  },
+  {
+    "city": "Brisbane",
+    "fetched_at": "2026-08-11T07:41:24.788102+00:00",
+    "weather": {
+      "time": "2026-08-11T17:30",
+      "interval": 900,
+      "temperature": 18.0,
+      "windspeed": 11.2,
+      "winddirection": 267,
+      "is_day": 0,
+      "weathercode": 0
+    }
+  }
+]
