@@ -31,18 +31,12 @@ def get_weather(latitude, longitude):
     if response.status_code == 200:
         data = response.json()
         
-        current_weather = {
-            "temperature" : data["current_weather"]["temperature"],
-            "windspeed" : data["current_weather"]["windspeed"],
-            "winddirection" : data["current_weather"]["winddirection"],
-            "weathercode" : data["current_weather"]["weathercode"],
-            "time" : data["current_weather"]["time"]
-        }
+        current_weather = data.get('current_weather')
 
         return current_weather
 
     else:
-        print(f"API error: {response.status_code}")
+        print(f"API error: {response.status_code} {response.reason} {response.content}")
         return None
 
 def save_to_file(city, data, filename):
@@ -56,12 +50,13 @@ def save_to_file(city, data, filename):
         filename: Path of the JSON file to write.
     """    
     record = {
-        "city": city,
+        "city": str(city).strip().capitalize(),
         "data": data 
     }
     with open(filename, "w") as f:
         json.dump(record, f, indent=2)
 
-result = get_weather(-33.87, 151.21)  # Sydney
-save_to_file('Sydney', result, "weather_output.json")
-print("Done.")
+if __name__ == "__main__":
+    result = get_weather(-33.87, 151.21)  # Sydney
+    save_to_file('Sydney', result, "./Task 2/weather_output.json")
+    print("Done.")
