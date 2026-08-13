@@ -2,6 +2,8 @@
 # Assessment 3 - Task 2
 # Utility functions for validating city coordinates, fetching weather data,
 # and maintaining a JSON log of weather records.
+# Student: Raphael Barbosa Maciel
+# Subject: AI Programming Fundamentals (COMP90100_2026_OT4_UMO_1)
 # ---------------------
 
 try:

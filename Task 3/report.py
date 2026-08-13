@@ -1,3 +1,10 @@
+# ----------------------
+# Assessment 3 - Task 3
+# Utility functions for generating the weather report in HTML.
+# Student: Raphael Barbosa Maciel
+# Subject: AI Programming Fundamentals (COMP90100_2026_OT4_UMO_1)
+# ---------------------
+
 try:
     from datetime import datetime, UTC
     import weather as w
