@@ -242,9 +242,7 @@ def summarise_log(log_path):
         "avg_temperature": None
     }     
 
-
-
-if __name__ == "__main__":
+def main():
     cities = [ 
         {"name": "Sydney", "lat": -33.87, "lon": 151.21}, 
         {"name": "Melbourne", "lat": -37.81, "lon": 144.96}, 
@@ -272,3 +270,7 @@ if __name__ == "__main__":
     update_log("weather_log.json", new)
     summary = summarise_log("weather_log.json")
     print(summary)
+
+
+if __name__ == "__main__":
+    main()
