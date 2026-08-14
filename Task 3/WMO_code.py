@@ -1,3 +1,10 @@
+# ----------------------
+# Assessment 3 - Task 3
+# Utility function for the WMO code description.
+# Student: Raphael Barbosa Maciel
+# Subject: AI Programming Fundamentals (COMP90100_2026_OT4_UMO_1)
+# GitHub repo: https://github.com/raphaelmaciel-unimelb/Assessment-3
+# ---------------------
 
 def get_code_description(code):
 

@@ -3,6 +3,7 @@
 # Utility functions for fetching weather data from Open-Meteo API.
 # Student: Raphael Barbosa Maciel
 # Subject: AI Programming Fundamentals (COMP90100_2026_OT4_UMO_1)
+# GitHub repo: https://github.com/raphaelmaciel-unimelb/Assessment-3
 # ---------------------
 
 import requests
