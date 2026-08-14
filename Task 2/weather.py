@@ -64,7 +64,10 @@ def save_to_file(city, data, filename):
     with open(filename, "w") as f:
         json.dump(record, f, indent=2)
 
-if __name__ == "__main__":
+def main():
     result = get_weather(-33.87, 151.21)  # Sydney
-    save_to_file('Sydney', result, "./Task 2/weather_output.json")
+    save_to_file('Sydney', result, "weather_output.json")
     print("Done.")
+
+if __name__ == "__main__":
+    main()
