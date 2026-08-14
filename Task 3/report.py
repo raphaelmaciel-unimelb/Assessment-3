@@ -27,6 +27,15 @@ except Exception as e:
 
 
 def read_log(log_path):
+    """Read weather records from a JSON log file.
+
+    Args:
+        log_path: Path to the JSON file containing saved weather records.
+
+    Returns:
+        A list of weather record dictionaries. If the file does not exist or
+        contains invalid JSON, an empty list is returned.
+    """
     list_results=[]
 
     try:
@@ -39,23 +48,33 @@ def read_log(log_path):
                             list_results = json_content
 
     except (AttributeError, FileNotFoundError, json.decoder.JSONDecodeError) as file_not_found:
-        print(f"   [Error] summarise_log() File error: {file_not_found}")
+        print(f"   [Error] read_log() file error: {file_not_found}")
         return []
-    
+
     return list_results
 
-def generate_report(log_path, output_path):
 
-    # Reading the log entries from the json file
+def generate_report(log_path, output_path):
+    """Generate an HTML weather report from a saved weather log.
+
+    The function reads the log, summarises the data, converts timestamps to
+    Melbourne time, and writes the rendered report to the output HTML file.
+
+    Args:
+        log_path: Path to the JSON weather log.
+        output_path: Path where the generated HTML report should be saved.
+    """
+
+    # Read the log entries from the JSON file.
     log_records_list = read_log(log_path)
 
-    # Receiving the Weather summary from the collector function
+    # Retrieve the weather summary from the collector module.
     summary = collector.summarise_log(log_path)
     
     data_list=[] 
     dates = []
     
-    # Going throught the log records to prepare the data that will presented in the log entries table
+    # Iterate through the log records and prepare the data for the table.
     for record in log_records_list:
         code_description = code.get_code_description(record["weather"]["weathercode"])
         date_convertion = datetime.fromisoformat(record.get('fetched_at')).astimezone(ZoneInfo("Australia/Melbourne"))
@@ -71,27 +90,27 @@ def generate_report(log_path, output_path):
         dates.append(record.get('fetched_at'))        
         data_list.append(data)
     
-    # Get the current time for the page heading with the report generation timestamp
+    # Get the current time for the report heading timestamp.
     timestamp_now = datetime.now(ZoneInfo("Australia/Melbourne"))
-    
-    # Get the oldest record in the log entries for the Date Range field
+
+    # Get the earliest record for the date range field.
     date_from = min(
-        dates, 
+        dates,
         key=lambda d: datetime.fromisoformat(d).astimezone(timezone.utc)
     )
     date_from = datetime.fromisoformat(date_from).astimezone(ZoneInfo("Australia/Melbourne"))
-    
-    # Get the most recent record in the log entries for the Date Range field
+
+    # Get the latest record for the date range field.
     date_to = max(
-        dates, 
+        dates,
         key=lambda d: datetime.fromisoformat(d).astimezone(timezone.utc)
     )
     date_to = datetime.fromisoformat(date_to).astimezone(ZoneInfo("Australia/Melbourne"))
-    
-    # 1. Automatically extract table headers from the first data dictionary keys
+
+    # Extract the table headers from the first data dictionary.
     log_entries_table_header = list(data_list[0].keys())
-    
-    # Sorte the log entries table by fetched timestamp
+
+    # Sort the log entries by timestamp.
     data_list = sorted(data_list, key=lambda item: item['timestamp'])
     
     html_style= """            
@@ -166,41 +185,41 @@ def generate_report(log_path, output_path):
                             <td>Cities tracked</td>
                             <td>
                                 {% for city in summary["cities_tracked"] %}
-                                    {{ city}}{% if loop.nextitem %}, {% endif %}
+                                    {{ city }}{% if loop.nextitem %}, {% endif %}
                                 {% endfor %}
                             </td>
                         </tr>
                         <tr>
                             <td>Date from</td>
                             <td>{{ date_from.strftime('%d-%m-%Y %H:%M:%S') }}</td>
-                        </tr>                            
+                        </tr>
                         <tr>
                             <td>Date to</td>
                             <td>{{ date_to.strftime('%d-%m-%Y %H:%M:%S') }}</td>
-                        </tr>                                                                
+                        </tr>
                     </tbody>
                 </table>
                 <h2>Log entries</h2>
                 <table class="styled-table">
                     <thead>
                         <tr>
-                            {# Dynamic Header Generation Loop #}
+                            {# Dynamic header generation loop #}
                             {% for entry in entries_table_header %}
                                 <th>{{ entry.title() }}</th>
                             {% endfor %}
                         </tr>
                     </thead>
                     <tbody>
-                        {# Dynamic Row Generation Loop #}
+                        {# Dynamic row generation loop #}
                         {% for row in data_list %}
                         <tr>
                             {% for entry in entries_table_header %}
-                                {% if entry == 'timestamp'%}    
+                                {% if entry == 'timestamp' %}
                                     <td>{{ row[entry].strftime('%d-%m-%Y %H:%M:%S') }}</td>
                                 {% else %}
                                     <td>{{ row[entry] }}</td>
                                 {% endif %}
-                            
+
                             {% endfor %}
                         </tr>
                         {% endfor %}
@@ -210,7 +229,7 @@ def generate_report(log_path, output_path):
         </body>
         """
     
-    # 2. Define the self-contained HTML structural template with embedded CSS
+    # Build the HTML structure with embedded CSS.
     html_template_string = f"""<!DOCTYPE html>
         <html lang="en">
             {html_header}
@@ -218,29 +237,34 @@ def generate_report(log_path, output_path):
         </html>
         """
 
-    # 3. Process the data using the template engine
+    # Render the HTML using the Jinja2 template engine.
     template = Template(html_template_string)
-    
-    # Using jinja2 to parse and render the HTML file
+
+    # Render the HTML and save it to the output file.
     rendered_html = template.render(
         timestamp_now=timestamp_now,
         html_style=html_style,
         summary=summary,
         date_from=date_from,
         date_to=date_to,
-        entries_table_header=log_entries_table_header, 
+        entries_table_header=log_entries_table_header,
         data_list=data_list
     )
-    
-    # Render to string and save
+
+    # Write the rendered HTML to the output file.
     with open(output_path, "w", encoding="utf-8") as file:
         file.write(rendered_html)
     
 
 def main():
+    """Generate the weather report for the saved log data.
+
+    This function runs the data collection step and then writes the final
+    HTML summary report to the output file.
+    """
     collector.main()
     generate_report("weather_log.json", "weather_report.html")
-    
+
 
 if __name__ == "__main__":
     main()

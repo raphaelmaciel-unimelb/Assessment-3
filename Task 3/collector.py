@@ -90,7 +90,7 @@ def fetch_all_cities(cities):
                 print(f"   [warn] fetch_all_cities(): Longitude out of range: {lon}")
                 continue
 
-            # Only request and store weather info when the city and coordinates are valid.
+            # Only request and store weather information when the city name and coordinates are valid.
             if city_name and  lat is not None and lon is not None:
                 current_weather = w.get_weather(lat, lon) or ""
 
@@ -143,7 +143,7 @@ def update_log(log_path, new_results):
     except (AttributeError, FileNotFoundError, json.decoder.JSONDecodeError) as file_not_found:
         print(f"   [warn] update_log(): {file_not_found} ... trying to create the file if the folder is available")
 
-    # Keep only records that contain a valid city, fetch timestamp, and weather payload.
+    # Keep only records with a valid city, collection timestamp, and weather payload.
     for result in new_results:
         raw_city = result.get('city')
         result_city = str(raw_city).strip().capitalize() if raw_city else ""
@@ -159,7 +159,8 @@ def update_log(log_path, new_results):
         try:
             # Persist the combined list as JSON for later summary and reuse.
             with open(log_path, "w", encoding="utf-8") as outfile:
-                json.dump(list_results, outfile, indent=2, ensure_ascii=False) #converting list[dict] to json and adding to the output file
+                # Converting the list of dictionaries to JSON and write it to the output file.
+                json.dump(list_results, outfile, indent=2, ensure_ascii=False)
         except Exception as e:
             print(f"   [error] update_log(): Error with the file {log_path}: {e}")
             return False
@@ -171,7 +172,7 @@ def update_log(log_path, new_results):
 def summarise_log(log_path):
     """Summarise the weather log by counting records and calculating summary metrics.
 
-    This function reads the saved weather log, filters out incomplete entries,
+    This function reads the saved weather log and filters out incomplete entries,
     and returns the total number of records, unique cities tracked, the latest
     fetch timestamp, and the average temperature across valid readings.
 
@@ -199,7 +200,7 @@ def summarise_log(log_path):
         return {}
 
 
-    # Collect the fields needed for a summary across all valid weather entries.
+    # Collect the fields needed for the summary.
     city_set= set()
     fetched_at_list=[]
     temperature_list=[]
@@ -225,7 +226,7 @@ def summarise_log(log_path):
             print(f"   [warn] summarise_log record skipped: {e}")
             continue
     
-    # If city, time stamp, and temperature lists are valid, create the summary
+    # If the city, timestamp, and temperature lists are valid, create the summary.
     if city_set and fetched_at_list and temperature_list:
         return {
             "total_records" : len(list_results),
@@ -243,6 +244,12 @@ def summarise_log(log_path):
     }     
 
 def main():
+    """Run a small demonstration fetch for a fixed set of cities.
+
+    This function is intended for local testing and demonstration. It fetches
+    weather data for a predefined list of cities and saves the resulting log
+    entries to weather_log.json.
+    """
     cities = [ 
         {"name": "Sydney", "lat": -33.87, "lon": 151.21}, 
         {"name": "Melbourne", "lat": -37.81, "lon": 144.96}, 
