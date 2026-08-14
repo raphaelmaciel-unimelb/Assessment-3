@@ -6,7 +6,7 @@
 # ---------------------
 
 try:
-    from datetime import datetime, UTC
+    from datetime import datetime, timezone, UTC
     import weather as weather
     import collector as collector
     import WMO_code as code
@@ -49,6 +49,7 @@ def generate_report(log_path, output_path):
     summary = collector.summarise_log(log_path)
     
     data_list=[] 
+    dates = []
     
     for record in log_records_list:
         code_description = code.get_code_description(record["weather"]["weathercode"])
@@ -59,7 +60,15 @@ def generate_report(log_path, output_path):
             "windspeed (km/h)":record["weather"]["windspeed"],
             "weathercode description":code_description
         }
+
+        dates.append(record.get('fetched_at'))        
         data_list.append(data)
+    
+    
+    date_from = min(
+        dates, 
+        key=lambda d: datetime.fromisoformat(d).astimezone(timezone.utc)
+    )
     
     # 1. Automatically extract table headers from the first data dictionary keys
     log_entries_table_headers = list(data_list[0].keys())
@@ -130,7 +139,11 @@ def generate_report(log_path, output_path):
                             <td>{{ summary["cities_tracked"] }}</td>
                         </tr>
                         <tr>
-                            <td>Date range</td>
+                            <td>Date from</td>
+                            <td>{{ date_from }}</td>
+                        </tr>                            
+                        <tr>
+                            <td>Date to</td>
                             <td>{{ summary["latest_fetch"] }}</td>
                         </tr>                                                                
                     </tbody>
@@ -172,10 +185,11 @@ def generate_report(log_path, output_path):
     template = Template(html_template_string)
     
     rendered_html = template.render(
-        summary=summary, 
+        timestamp=collector.fetched_at(),
+        summary=summary,
+        date_from=date_from,
         headers=log_entries_table_headers, 
-        data_list=data_list, 
-        timestamp=collector.fetched_at()
+        data_list=data_list
         )
     
     # Render to string and save
