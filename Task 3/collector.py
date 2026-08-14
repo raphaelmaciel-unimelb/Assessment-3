@@ -13,7 +13,6 @@ try:
     import json
     import statistics as st
     from dotenv import load_dotenv
-    from pathlib import Path
     
     load_dotenv()
 
@@ -23,7 +22,7 @@ except (SyntaxError, ImportError, NameError) as synt_err:
 except Exception as e:
      print(f"  [warn] Environment is not ready or Import has failed: {e}")
 
-    
+
 def to_float(value, default=None):
     """Convert a value to a float or return a fallback value.
 
@@ -244,8 +243,6 @@ def summarise_log(log_path):
     }     
 
 def main():
-    print("Main function from collector.py has been executed!")
-        
     cities = [ 
         {"name": "Sydney", "lat": -33.87, "lon": 151.21}, 
         {"name": "Melbourne", "lat": -37.81, "lon": 144.96}, 
