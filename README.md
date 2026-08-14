@@ -13,3 +13,4 @@ Using your corrected weather.py from Task 1 as an import, create a new Python fi
 
 ### Task 3: Generate the weather report
 In this task you will create a simple HTML page that displays the weather results produced in Task 2.
+URL for the Weather report page: https://raphaelmaciel-unimelb.github.io/Assessment-3/
